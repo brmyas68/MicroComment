@@ -1,0 +1,52 @@
+
+
+syntax = "proto3";
+package protoCommentService;
+option go_package ="pbCommentService";
+
+service CommentService{
+
+   rpc Insert (RequestInsertComment)    returns (ResponseInsertComment){};
+   rpc GetByWhere (RequestWhereComment) returns (stream ResponseWhereComment){};
+} 
+
+message Comment{
+   int32  CommentID            = 1;
+   int32  CommentUserID        = 2;
+   string CommentProductID     = 3;
+   string CommentText          = 4;
+   string CommentDateTime      = 5;
+}
+
+message RequestInsertComment{
+    Comment Comment = 1;
+}
+message ResponseInsertComment{
+   bool   CommentState   = 1;
+   Status Status         = 2;
+}
+
+message RequestWhereComment{
+   int32  CommentUserID      = 1;
+   int32  CommentProductID   = 2;
+}
+
+message ResponseWhereComment{
+   Comment    Comment      = 1;
+   Status     Status       = 2;
+}
+
+
+message Status{
+   StatusCode StatusCode       = 1;
+   StatusMessage StatusMessage = 2;
+}
+enum StatusMessage {
+   SUCCESS      = 0;
+   FAILED       = 1; 
+}
+enum StatusCode {
+   Status200 = 0;
+   Status400 = 1;
+   Status401 = 2;
+}

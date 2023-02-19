@@ -1,0 +1,19 @@
+npm init or npm init -y
+and  create   package.json
+
+"type": "module",
+npm update
+
+npm install npm@latest -g
+
+npm i date-and-time
+npm install express --save
+
+npm i @grpc/grpc-js
+
+npm install mysql
+
+
+npm install --save @grpc/proto-loader
+
+npm install body-parser
